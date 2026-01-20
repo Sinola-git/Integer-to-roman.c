@@ -1,0 +1,20 @@
+char* intToRoman(int num){
+    // Predefined Roman numeral values and corresponding symbols
+    int values[] =    {1000, 900, 500, 400, 100,  90,  50,  40,  10,  9, 5, 4, 1};
+    char* symbols[] = {"M", "CM","D", "CD","C","XC","L","XL","X","IX","V","IV","I"};
+
+    // Allocate enough space: max Roman numeral length is < 20 for num <= 3999
+    char* result = (char*)malloc(20 * sizeof(char));
+    result[0] = '\0'; // Initialize empty string
+
+    int i = 0;
+    while (num > 0) {
+        while (num >= values[i]) {
+            num -= values[i];
+            strcat(result, symbols[i]);
+        }
+        i++;
+    }
+
+    return result;
+}
